@@ -8,13 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public float timeLimit = 60f; // time limit set in seconds
     private float currentTime; // time remaining
-    private TextMeshProUGUI timerText; // reference to the tmp time text
+    public TextMeshProUGUI timerText; // reference to the tmp time text
 
 
     // Start is called before the first frame update
     private void Start()
     {
-        timerText = GetComponent<TextMeshProUGUI>();
         StartTimer();
     }
 
