@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeLimit = 60f; // time limit set in seconds
-    private float currentTime; // time remaining
-    public TextMeshProUGUI timerText; // reference to the tmp time text
+    public float timeLimit = 60f;       // time limit set in seconds
+    private float currentTime;          // time remaining
+    public TextMeshProUGUI timerText;   // reference to the tmp time text
+
+    public GameObject gameOverWindow;   // reference to game over window
 
 
     // Start is called before the first frame update
@@ -48,11 +50,10 @@ public class GameManager : MonoBehaviour
     //game finished method, throws up fail window
     private void GameOver()
     {
-        currentTime = 0f;  //set time to 0
-
+        currentTime = 0f;               //set time to 0
         Debug.Log("time out");
-        
-        //set game over window to active
+
+        gameOverWindow.SetActive(true); //lose window is set active
     }
 
     //Sends player to the homescreen/ homescene

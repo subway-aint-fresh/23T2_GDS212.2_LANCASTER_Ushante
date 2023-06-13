@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 10
   timerText: {fileID: 2067975738}
+  gameOverWindow: {fileID: 1441583233}
 --- !u!4 &269951308
 Transform:
   m_ObjectHideFlags: 0
@@ -444,6 +445,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1441583233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8427833871713492046, guid: 44faeb47b864cde45873b5ea05c5d679, type: 3}
+  m_PrefabInstance: {fileID: 8427833870288686287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1441583234 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8427833871713492045, guid: 44faeb47b864cde45873b5ea05c5d679, type: 3}
