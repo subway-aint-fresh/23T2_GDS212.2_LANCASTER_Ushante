@@ -27,9 +27,7 @@ public class GameManager : MonoBehaviour
         } 
         else
         {
-            currentTime = 0f;
-            Debug.Log("time out");
-            //execute game finished
+            GameOver();
         }
     }
 
@@ -42,17 +40,32 @@ public class GameManager : MonoBehaviour
 
         private void UpdateTimerText()
         {
-            string minutes = Mathf.Floor(currentTime / 60f).ToString("00");
-            string seconds = (currentTime % 60f).ToString("00");
+            string minutes = Mathf.Floor(currentTime / timeLimit).ToString("00");
+            string seconds = (currentTime % timeLimit).ToString("00");
             timerText.text = $"{minutes}:{seconds}";
         }
 
     //game finished method, throws up fail window
+    private void GameOver()
+    {
+        currentTime = 0f;  //set time to 0
+
+        Debug.Log("time out");
+        
+        //set game over window to active
+    }
 
     //Sends player to the homescreen/ homescene
     public void HomeScreen()
     {
         //Loads homescreen scene
         SceneManager.LoadScene(0);
+    }
+
+    //replays scene
+    public void ReplayGame()
+    {
+        //reloads current game scene
+        SceneManager.LoadScene(1);
     }
 }
