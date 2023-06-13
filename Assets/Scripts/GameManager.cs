@@ -6,67 +6,71 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeLimit = 60f;       // time limit set in seconds
-    private float currentTime;          // time remaining
-    public TextMeshProUGUI timerText;   // reference to the tmp time text
+    public float timeLimit = 60f; // Time limit set in seconds
+    private float currentTime; // Time remaining
+    public TextMeshProUGUI timerText; // Reference to the TMP time text
+    public GameObject gameOverWindow; // Reference to the game over window
 
-    public GameObject gameOverWindow;   // reference to game over window
-
-
-    // Start is called before the first frame update
     private void Start()
     {
         StartTimer();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (currentTime > 0f)
         {
             currentTime -= Time.deltaTime;
             UpdateTimerText();
-        } 
+        }
         else
         {
-            GameOver();
+            GameFailed();
         }
     }
 
-    //Timer
-
+    // Timer
         public void StartTimer()
         {
             currentTime = timeLimit;
+            UpdateTimerText();
         }
 
         private void UpdateTimerText()
         {
-            string minutes = Mathf.Floor(currentTime / timeLimit).ToString("00");
-            string seconds = (currentTime % timeLimit).ToString("00");
-            timerText.text = $"{minutes}:{seconds}";
-        }
+            int minutes = Mathf.FloorToInt(currentTime / 60f);
+            int seconds = Mathf.FloorToInt(currentTime % 60f);
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-    //game finished method, throws up fail window
-    private void GameOver()
-    {
-        currentTime = 0f;               //set time to 0
-        Debug.Log("time out");
-
-        gameOverWindow.SetActive(true); //lose window is set active
+            // Make sure the timer text updates properly through a check
+            if (minutes <= 0 && seconds <= 0)
+            {
+                timerText.text = "00:00";
+            }
+            else
+            {
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
     }
 
-    //Sends player to the homescreen/ homescene
+    // Ends the game and throws up a game over window 
+    private void GameFailed()
+    {
+        currentTime = 0f;
+        //Debug.Log("Time's up");
+
+        gameOverWindow.SetActive(true);
+    }
+
+    // Loads home screen scene
     public void HomeScreen()
     {
-        //Loads homescreen scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("HomeScreen");
     }
 
-    //replays scene
+    // Replays the game
     public void ReplayGame()
     {
-        //reloads current game scene
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
