@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ImageSelection : MonoBehaviour, IPointerClickHandler
+public class ImageSelection : MonoBehaviour
 {
     public delegate void ImageSelected(GameObject image);
     public delegate void ImageDeselected(GameObject image);
@@ -21,41 +20,28 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
         IsSelected = false; // Initialize selection state to false
     }
 
-        public void OnPointerClick(PointerEventData eventData)
+    private void OnMouseDown()
     {
-        Camera mainCamera = Camera.main;
-        if (mainCamera != null)
+        if (gameObject.layer == LayerMask.NameToLayer(expectedLayerName))
         {
-            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(eventData.position), Vector2.zero);
+            IsSelected = !IsSelected;
 
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
+            if (IsSelected)
             {
-                if (LayerMask.LayerToName(hit.collider.gameObject.layer) == expectedLayerName)
-                {
-                    IsSelected = !IsSelected;
-
-                    if (IsSelected)
-                    {
-                        OnImageSelected?.Invoke(gameObject);
-                        Debug.Log("Image selected");
-                    }
-                    else
-                    {
-                        OnImageDeselected?.Invoke(gameObject);
-                        Debug.Log("Image deselected");
-                    }
-
-                    gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
-                }
+                OnImageSelected?.Invoke(gameObject);
+                Debug.Log("Image selected");
             }
-        }
-        else
-        {
-            Debug.Log("No main camera found!");
+            else
+            {
+                OnImageDeselected?.Invoke(gameObject);
+                Debug.Log("Image deselected");
+            }
+
+            gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
         }
     }
-
 }
+
 
 
 

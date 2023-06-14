@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,27 +48,27 @@ public class GameManager : MonoBehaviour
     }
 
     // Timer
-        public void StartTimer()
+    public void StartTimer()
+    {
+        currentTime = timeLimit;
+        UpdateTimerText();
+    }
+
+    private void UpdateTimerText()
+    {
+        int minutes = Mathf.FloorToInt(currentTime / 60f);
+        int seconds = Mathf.FloorToInt(currentTime % 60f);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        // Make sure the timer text updates properly through a check
+        if (minutes <= 0 && seconds <= 0)
         {
-            currentTime = timeLimit;
-            UpdateTimerText();
+            timerText.text = "00:00";
         }
-
-        private void UpdateTimerText()
+        else
         {
-            int minutes = Mathf.FloorToInt(currentTime / 60f);
-            int seconds = Mathf.FloorToInt(currentTime % 60f);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-
-            // Make sure the timer text updates properly through a check
-            if (minutes <= 0 && seconds <= 0)
-            {
-                timerText.text = "00:00";
-            }
-            else
-            {
-                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-            }
+        }
     }
 
     // Find Image Puzzle
@@ -108,7 +107,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     private void SuccessfulImageSelection()
     {
         // Set exit button to active
@@ -122,7 +120,7 @@ public class GameManager : MonoBehaviour
         gameOverWindow.SetActive(true);
     }
 
-    //Ends the game and throws up a game win window
+    // Ends the game and throws up a game win window
     public void GameWin()
     {
         currentTime = 0f;
