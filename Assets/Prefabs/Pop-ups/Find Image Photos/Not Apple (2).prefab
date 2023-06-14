@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 847006643231500259}
   - component: {fileID: 6352430335568357966}
-  - component: {fileID: 8229824092654199991}
   - component: {fileID: -6330372972597859271}
+  - component: {fileID: -9138732344023341723}
   m_Layer: 7
   m_Name: Not Apple (2)
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: d4191521fdc1a4f4f9f734ec86677356, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -86,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8229824092654199991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6547616555009486912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b5dc1a13cb713469faa9c916d5a93e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-6330372972597859271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -124,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.16, y: 2.29}
   m_EdgeRadius: 0
+--- !u!114 &-9138732344023341723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6547616555009486912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b5dc1a13cb713469faa9c916d5a93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expectedLayerName: CorrectImage

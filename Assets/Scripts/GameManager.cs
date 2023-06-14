@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -7,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     public float timeLimit = 60f;       // Time limit set in seconds
     private float currentTime;          // Time remaining
     public TextMeshProUGUI timerText;   // Reference to the TMP time text
@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour
     private int correctSelections;
     private int wrongSelections;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -61,10 +73,11 @@ public class GameManager : MonoBehaviour
     }
 
     // Find Image Puzzle
-    
+
     // Method responsible for checking if the image selections are correct
     public void CheckImageSelections()
     {
+        Debug.Log("CheckImageSelections method called");
         ImageSelection[] imageSelections = FindObjectsOfType<ImageSelection>();
 
         correctSelections = 0;
@@ -88,13 +101,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("Correct Selections: " + correctSelections);
         Debug.Log("Wrong Selections: " + wrongSelections);
 
-
         if (correctSelections >= 6 && wrongSelections <= 3)
         {
             // Trigger a method in the GameManager to handle the successful selection of 6 correct images.
             SuccessfulImageSelection();
         }
     }
+
 
     private void SuccessfulImageSelection()
     {
