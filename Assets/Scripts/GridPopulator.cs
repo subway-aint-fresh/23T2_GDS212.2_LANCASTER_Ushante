@@ -12,7 +12,20 @@ public class GridPopulator : MonoBehaviour
 
     private void Start()
     {
+        ShuffleImagePrefabs();
         PopulateGrid();
+    }
+
+    private void ShuffleImagePrefabs()
+    {
+        int count = imagePrefabs.Length;
+        for (int i = 0; i < count - 1; i++)
+        {
+            int randomIndex = Random.Range(i, count);
+            GameObject temp = imagePrefabs[randomIndex];
+            imagePrefabs[randomIndex] = imagePrefabs[i];
+            imagePrefabs[i] = temp;
+        }
     }
 
     private void PopulateGrid()
@@ -40,6 +53,7 @@ public class GridPopulator : MonoBehaviour
         }
     }
 }
+
 
 
 
