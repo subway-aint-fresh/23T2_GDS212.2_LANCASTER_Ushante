@@ -12,7 +12,7 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
     private GameManager gameManager; // Reference to the GameManager script
 
     private bool isSelected;
-    private int expectedLayer = 8; // Layer index of the expected correct image layer
+    private int expectedLayer = 6; // Layer index of the expected correct image layer
 
     private void Start()
     {
@@ -32,10 +32,12 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
                 if (isSelected)
                 {
                     OnImageSelected?.Invoke(gameObject);
+                    Debug.Log("image selected");
                 }
                 else
                 {
                     OnImageDeselected?.Invoke(gameObject);
+                    Debug.Log("image unselected");
                 }
 
                 gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
