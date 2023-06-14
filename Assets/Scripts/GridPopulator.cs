@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class GridPopulator : MonoBehaviour
 {
-    public GameObject container;
-    public GameObject[] imagePrefabs;
+    public GameObject[] imagePrefabs;  // Array of image prefabs
+    public Transform container;
 
-    private GameObject selectedImage;
+    public int gridWidth = 3;
+    public int gridHeight = 3;
+    public float cellSize = 1f;
+    public float spacing = 0.2f;
 
     private void Start()
     {
@@ -14,41 +17,29 @@ public class GridPopulator : MonoBehaviour
 
     private void PopulateGrid()
     {
+        Vector2 gridSize = new Vector2(gridWidth, gridHeight);
+        float totalWidth = (gridWidth * cellSize) + ((gridWidth - 1) * spacing);
+        float totalHeight = (gridHeight * cellSize) + ((gridHeight - 1) * spacing);
+        Vector2 startPos = new Vector2(-totalWidth / 2f, totalHeight / 2f);
+
         int index = 0;
-        for (int row = 0; row < 3; row++)
+        for (int y = 0; y < gridHeight; y++)
         {
-            for (int col = 0; col < 3; col++)
+            for (int x = 0; x < gridWidth; x++)
             {
-                Vector3 position = new Vector3(col * 2, row * -2, 0); //I have to adjust this
+                Vector2 cellPosition = startPos + new Vector2(x * (cellSize + spacing), -y * (cellSize + spacing));
+                Vector2 scale = new Vector2(cellSize, cellSize);
 
-                GameObject imageObj = Instantiate(imagePrefabs[index], position, Quaternion.identity, container.transform);
-                index = (index + 1) % imagePrefabs.Length; // Cycle through the image prefabs
+                GameObject imagePrefab = imagePrefabs[index % imagePrefabs.Length];
+                GameObject imageObj = Instantiate(imagePrefab, container);
+                imageObj.transform.localPosition = cellPosition;
+                imageObj.transform.localScale = scale;
 
-                // Add a script to the image object to handle selection
-                ImageSelection imageSelection = imageObj.AddComponent<ImageSelection>();
-                imageSelection.OnImageSelected += OnImageSelected;
-                imageSelection.OnImageDeselected += OnImageDeselected;
-
-                // I need to customize the image object (e.g., set sprite, adjust size) 
+                index++;
             }
         }
     }
-
-    private void OnImageSelected(GameObject image)
-    {
-        // Handle the selected image
-        selectedImage = image;
-        Debug.Log("Image selected: " + image.name);
-    }
-
-    private void OnImageDeselected(GameObject image)
-    {
-        // Handle the deselected image
-        if (selectedImage == image)
-        {
-            selectedImage = null;
-            Debug.Log("Image deselected: " + image.name);
-        }
-    }
 }
+
+
 
