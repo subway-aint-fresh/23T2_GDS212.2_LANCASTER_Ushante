@@ -10,6 +10,13 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
     public event ImageDeselected OnImageDeselected;
 
     private bool isSelected;
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        // Get a reference to the GameManager script
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -23,5 +30,9 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
             isSelected = true;
             OnImageSelected?.Invoke(gameObject);
         }
+
+        // Call a method in the GameManager to check the image selections
+        gameManager.CheckImageSelections();
     }
 }
+

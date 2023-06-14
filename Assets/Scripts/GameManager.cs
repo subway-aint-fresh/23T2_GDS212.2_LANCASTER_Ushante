@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverWindow;   // Reference to the game over window
     public GameObject gameWinWindow;    // Reference to the game win window
 
+    private int correctSelections;
+    private int wrongSelections;
+
+
     private void Start()
     {
         StartTimer();
@@ -53,6 +57,27 @@ public class GameManager : MonoBehaviour
             {
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
+    }
+
+    // Find Image Puzzle
+    
+    // Method responsible for checking if the image selections are correct
+    public void CheckImageSelections()
+    {
+        //increment correct selections counter if right select
+        //increment incorrect selections counter if wrong
+        //use raycasting
+
+        if (correctSelections >= 6 && wrongSelections <= 3)
+        {
+            // Trigger a method in the GameManager to handle the successful selection of 6 correct images.
+            SuccessfulImageSelection();
+        }
+    }
+
+    private void SuccessfulImageSelection()
+    {
+        // Set exit button to active
     }
 
     // Ends the game and throws up a game over window 
