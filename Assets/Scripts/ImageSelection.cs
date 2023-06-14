@@ -9,30 +9,39 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
     public event ImageSelected OnImageSelected;
     public event ImageDeselected OnImageDeselected;
 
+    private GameManager gameManager; // Reference to the GameManager script
+
     private bool isSelected;
-    private GameManager gameManager;
+    private int expectedLayer = 8; // Layer index of the expected correct image layer
 
     private void Start()
     {
-        // Get a reference to the GameManager script
         gameManager = FindObjectOfType<GameManager>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isSelected)
-        {
-            isSelected = false;
-            OnImageDeselected?.Invoke(gameObject);
-        }
-        else
-        {
-            isSelected = true;
-            OnImageSelected?.Invoke(gameObject);
-        }
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(eventData.position), Vector2.zero);
 
-        // Call a method in the GameManager to check the image selections
-        gameManager.CheckImageSelections();
+        if (hit.collider != null && hit.collider.gameObject == gameObject)
+        {
+            if (hit.collider.gameObject.layer == expectedLayer)
+            {
+                isSelected = !isSelected;
+
+                if (isSelected)
+                {
+                    OnImageSelected?.Invoke(gameObject);
+                }
+                else
+                {
+                    OnImageDeselected?.Invoke(gameObject);
+                }
+
+                gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
+            }
+        }
     }
 }
+
 
