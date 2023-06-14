@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -64,9 +65,29 @@ public class GameManager : MonoBehaviour
     // Method responsible for checking if the image selections are correct
     public void CheckImageSelections()
     {
-        //increment correct selections counter if right select
-        //increment incorrect selections counter if wrong
-        //use raycasting
+        ImageSelection[] imageSelections = FindObjectsOfType<ImageSelection>();
+
+        correctSelections = 0;
+        wrongSelections = 0;
+
+        foreach (ImageSelection imageSelection in imageSelections)
+        {
+            if (imageSelection.IsSelected)
+            {
+                if (imageSelection.gameObject.layer == LayerMask.NameToLayer("CorrectImage"))
+                {
+                    correctSelections++;
+                }
+                else if (imageSelection.gameObject.layer == LayerMask.NameToLayer("WrongImage"))
+                {
+                    wrongSelections++;
+                }
+            }
+        }
+
+        Debug.Log("Correct Selections: " + correctSelections);
+        Debug.Log("Wrong Selections: " + wrongSelections);
+
 
         if (correctSelections >= 6 && wrongSelections <= 3)
         {
@@ -78,6 +99,7 @@ public class GameManager : MonoBehaviour
     private void SuccessfulImageSelection()
     {
         // Set exit button to active
+        Debug.Log("pop up done");
     }
 
     // Ends the game and throws up a game over window 

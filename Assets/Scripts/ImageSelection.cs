@@ -11,12 +11,14 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
 
     private GameManager gameManager; // Reference to the GameManager script
 
-    private bool isSelected;
-    private int expectedLayer = 6; // Layer index of the expected correct image layer
+    public bool IsSelected { get; private set; } // Property to track selection state
+
+    private int expectedLayer = 7; // Layer index of the expected correct image layer
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        IsSelected = false; // Initialize selection state to false
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -27,17 +29,17 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
         {
             if (hit.collider.gameObject.layer == expectedLayer)
             {
-                isSelected = !isSelected;
+                IsSelected = !IsSelected;
 
-                if (isSelected)
+                if (IsSelected)
                 {
                     OnImageSelected?.Invoke(gameObject);
-                    Debug.Log("image selected");
+                    Debug.Log("Image selected");
                 }
                 else
                 {
                     OnImageDeselected?.Invoke(gameObject);
-                    Debug.Log("image unselected");
+                    Debug.Log("Image deselected");
                 }
 
                 gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
@@ -45,5 +47,6 @@ public class ImageSelection : MonoBehaviour, IPointerClickHandler
         }
     }
 }
+
 
 
