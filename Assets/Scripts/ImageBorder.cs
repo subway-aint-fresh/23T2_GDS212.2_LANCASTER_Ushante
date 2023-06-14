@@ -6,6 +6,8 @@ public class ImageBorder : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
+    //I might just activate/deactivate a border child of the image prefabs
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
