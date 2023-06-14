@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float timeLimit = 60f; // Time limit set in seconds
-    private float currentTime; // Time remaining
-    public TextMeshProUGUI timerText; // Reference to the TMP time text
-    public GameObject gameOverWindow; // Reference to the game over window
+    public float timeLimit = 60f;       // Time limit set in seconds
+    private float currentTime;          // Time remaining
+    public TextMeshProUGUI timerText;   // Reference to the TMP time text
+
+    public GameObject gameOverWindow;   // Reference to the game over window
+    public GameObject gameWinWindow;    // Reference to the game win window
 
     private void Start()
     {
@@ -57,9 +59,14 @@ public class GameManager : MonoBehaviour
     private void GameFailed()
     {
         currentTime = 0f;
-        //Debug.Log("Time's up");
-
         gameOverWindow.SetActive(true);
+    }
+
+    //Ends the game and throws up a game win window
+    public void GameWin()
+    {
+        currentTime = 0f;
+        gameWinWindow.SetActive(true);
     }
 
     // Loads home screen scene
