@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Email
+    uniqueID: 76434035
+    locked: 0
+  - name: Image Finder
+    uniqueID: 2851885587
+    locked: 0
+  - name: Simon Says
+    uniqueID: 3763196521
+    locked: 0
