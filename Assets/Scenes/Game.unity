@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1d2889f6020d64e9a190075f29ea65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 20
+  timeLimit: 60
   timerText: {fileID: 2067975738}
   exitButton: {fileID: 2086235473}
   sendButton: {fileID: 1184463427}
