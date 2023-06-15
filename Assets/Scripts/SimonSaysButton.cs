@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonInteraction : MonoBehaviour
+public class SimonSaysButton : MonoBehaviour
 {
     public int buttonIndex;
     public GameObject coloredButton;

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         send_Collider = sendButton.GetComponent<Collider2D>();
 
         // Set find image pop-up to active
-        findImagePuzzle.SetActive(true);
+        //findImagePuzzle.SetActive(true);
     }
 
     private void Update()
