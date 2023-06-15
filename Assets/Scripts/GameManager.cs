@@ -168,10 +168,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("HomeScreen");
     }
-
-    // Replays the game
-    public void ReplayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
 }

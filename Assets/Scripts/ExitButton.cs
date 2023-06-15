@@ -8,6 +8,7 @@ public class ExitButton : MonoBehaviour
 
     private GameManager gameManager;
 
+
     private void Start()
     {
         gameManager = GameManager.Instance;
