@@ -21,6 +21,8 @@ public class SimonSaysManager : MonoBehaviour
 
     private bool playerInputEnabled = false;  // Flag to control player input
 
+    private GameManager gameManager;        // Reference to the GameManager script
+
     void Start()
     {
         // Set the initial state of the colored versions of the buttons
@@ -30,6 +32,8 @@ public class SimonSaysManager : MonoBehaviour
         button4Color.SetActive(false);
 
         StartCoroutine(PlaySequence());
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     IEnumerator PlaySequence()
@@ -99,7 +103,8 @@ public class SimonSaysManager : MonoBehaviour
 
             if (sequencesMatch)
             {
-                // Player's sequence matches the expected sequence
+                // Player's sequence matches the expected sequence, play win method from GameManager
+                /*CorrectSequence();*/
                 CorrectSequence();
             }
             else
@@ -183,6 +188,8 @@ public class SimonSaysManager : MonoBehaviour
         // Disable player input after a correct sequence
         playerInputEnabled = false;
 
-        // Set popup to inactive
+        // Play win method in game manager
+        gameManager.SuccessfulSequence();
+
     }
 }

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject findImagePuzzle;  // Reference to the find image puzzle
 
+    private bool playerInputEnabled = false; // Flag to control player input for ImageSelection
+
     private void Start()
     {
         StartTimer();
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Find Image Puzzle
+    // Find Image Puzzle management
 
     // Method responsible for checking if the image selections are correct
     public void CheckImageSelections()
@@ -119,6 +121,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Method for Simon Says Win
+    public void SuccessfulSequence()
+    {
+        Debug.Log("Enabling find image window");
+        // Set simon says window to inactive
+        // simonSaysWindow.SetActive(false);
+
+        // Enable input on find image window
+        playerInputEnabled = true;
+    }
+
+    // Method for Find Image Win
     private void SuccessfulImageSelection()
     {
         // Set exit button to active
@@ -153,4 +167,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("HomeScreen");
     }
+
+    // Method to check if player input is enabled for ImageSelection
+    public bool IsPlayerInputEnabled()
+    {
+        return playerInputEnabled;
+    }
 }
+

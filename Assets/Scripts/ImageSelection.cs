@@ -24,27 +24,31 @@ public class ImageSelection : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //if (gameObject.layer == LayerMask.NameToLayer(expectedLayerName))
-        //{
-            IsSelected = !IsSelected;
-
-            if (IsSelected)
+        if (gameManager.IsPlayerInputEnabled())
+        {
+            if (gameObject.layer == LayerMask.NameToLayer(expectedLayerName))
             {
-                OnImageSelected?.Invoke(gameObject);
-                Debug.Log("Image selected");
-                border.SetActive(true);
-            }
-            else
-            {
-                OnImageDeselected?.Invoke(gameObject);
-                Debug.Log("Image deselected");
-                border.SetActive(false);
-            }
+                IsSelected = !IsSelected;
 
-            gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
-        //}
+                if (IsSelected)
+                {
+                    OnImageSelected?.Invoke(gameObject);
+                    Debug.Log("Image selected");
+                    border.SetActive(true);
+                }
+                else
+                {
+                    OnImageDeselected?.Invoke(gameObject);
+                    Debug.Log("Image deselected");
+                    border.SetActive(false);
+                }
+
+                gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
+            }
+        }
     }
 }
+
 
 
 
