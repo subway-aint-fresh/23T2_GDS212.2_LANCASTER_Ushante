@@ -51,3 +51,6 @@ TagManager:
   - name: Simon Says
     uniqueID: 3763196521
     locked: 0
+  - name: Animal Guesser
+    uniqueID: 3259883165
+    locked: 0
