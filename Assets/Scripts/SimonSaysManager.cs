@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class SimonSaysManager : MonoBehaviour
 {
-    public GameObject button1Color;         // Reference to the colored child object of exit button 1
-    public GameObject button1;              // Reference to the non-colored child object of exit button 1
+    public GameObject button1;              // Reference to the non-colored object button 1
+    public GameObject button1Color;         // Reference to the colored child object of button 1
 
+    public GameObject button2;              // Button 2 non-colored 
     public GameObject button2Color;         // Button 2 colored child
-    public GameObject button2;              // Button 2 non-colored child
-    
-    public GameObject button3Color;         // Button 3 colored child
-    public GameObject button3;              // Button 3 non-colored child
 
+    public GameObject button3;              // Button 3 non-colored 
+    public GameObject button3Color;         // Button 3 colored child
+
+    public GameObject button4;              // Button 4 non-colored 
     public GameObject button4Color;         // Button 4 colored child
-    public GameObject button4;              // Button 4 non-colored child
 
     void Start()
     {
