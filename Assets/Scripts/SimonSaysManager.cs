@@ -21,6 +21,8 @@ public class SimonSaysManager : MonoBehaviour
 
     private bool playerInputEnabled = false;  // Flag to control player input
 
+    private int failedAttempts = 0; // Counter for the number of failed attempts
+
     private GameManager gameManager;        // Reference to the GameManager script
 
     void Start()
@@ -110,6 +112,7 @@ public class SimonSaysManager : MonoBehaviour
             else
             {
                 // Player's sequence does not match the expected sequence
+                playerInputEnabled = false;
                 WrongSequence();
             }
         }
@@ -157,28 +160,48 @@ public class SimonSaysManager : MonoBehaviour
         button.GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    private void WrongSequence()
+    IEnumerator ReplaySequenceCoroutine()
     {
-        Debug.LogError("Wrong sequence. Try again.");
+        // Reset button states
+        ResetButton(button1, button1Color);
+        ResetButton(button2, button2Color);
+        ResetButton(button3, button3Color);
+        ResetButton(button4, button4Color);
 
-        // Disable player input while replaying the sequence
-        playerInputEnabled = false;
+        // Reset player sequence
+        playerSequence.Clear();
 
-        // Replay the sequence
-        StartCoroutine(ReplaySequence());
+        // Play the sequence
+        yield return StartCoroutine(PlaySequence());
     }
 
-    private IEnumerator ReplaySequence()
+    private void ResetButton(GameObject button, GameObject coloredButton)
     {
-        // Replay the sequence for the player to observe
-        for (int i = 0; i < currentSequence.Count; i++)
-        {
-            yield return new WaitForSeconds(1f); // Delay between button activations
-            PlayButton(currentSequence[i]);
-        }
+        coloredButton.SetActive(false);
+        button.GetComponent<SpriteRenderer>().enabled = true;
+    }
 
-        // Enable player input after replaying the sequence
-        playerInputEnabled = true;
+    private void WrongSequence()
+    {
+        failedAttempts++;
+
+        Debug.Log("Wrong sequence. Try again.");
+
+        // Check if the player has reached the maximum number of failed attempts
+        if (failedAttempts >= 30)
+        {
+            Debug.Log("Max failed attempts reached. Game over.");
+            playerInputEnabled = false;
+            // Call your game over method here
+        }
+        else
+        {
+            // Disable player input while replaying the sequence
+            playerInputEnabled = false;
+
+            // Replay the sequence
+            StartCoroutine(ReplaySequenceCoroutine());
+        }
     }
 
     private void CorrectSequence()
@@ -190,6 +213,5 @@ public class SimonSaysManager : MonoBehaviour
 
         // Play win method in game manager
         gameManager.SuccessfulSequence();
-
     }
 }
