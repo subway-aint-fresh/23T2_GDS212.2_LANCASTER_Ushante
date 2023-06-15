@@ -106,8 +106,30 @@ public class SimonSaysManager : MonoBehaviour
         // Add the player's button press to the sequence
         playerSequence.Add(buttonIndex);
 
+        // Play the button sound
+        PlayButtonSound(buttonIndex);
+
         // Compare player's sequence with expected sequence
         CheckPlayerSequence();
+    }
+
+    public void PlayButtonSound(int buttonIndex)
+    {
+        switch (buttonIndex)
+        {
+            case 1:
+                button1AudioSource.Play();
+                break;
+            case 2:
+                button2AudioSource.Play();
+                break;
+            case 3:
+                button3AudioSource.Play();
+                break;
+            case 4:
+                button4AudioSource.Play();
+                break;
+        }
     }
 
     public void CheckPlayerSequence()
@@ -172,11 +194,10 @@ public class SimonSaysManager : MonoBehaviour
 
     private IEnumerator ActivateButton(GameObject coloredButton, GameObject button, AudioSource audioSource)
     {
-
         coloredButton.SetActive(true);
         button.GetComponent<SpriteRenderer>().enabled = false;
 
-        // Play the beep sound effect
+        // Play the button sound effect
         audioSource.Play();
 
         yield return new WaitForSeconds(0.5f); // Duration the colored button is active
@@ -240,3 +261,4 @@ public class SimonSaysManager : MonoBehaviour
         gameManager.SuccessfulSequence();
     }
 }
+
