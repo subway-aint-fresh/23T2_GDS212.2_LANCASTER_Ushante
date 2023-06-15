@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private int correctSelections;
     private int wrongSelections;
 
+    public AudioSource timeTicking;
+
     public GameObject findImageWindow;  // Reference to the find image puzzle
     public GameObject simonSaysWindow;
 
@@ -147,6 +149,7 @@ public class GameManager : MonoBehaviour
     private void GameFailed()
     {
         currentTime = 0f;
+        timeTicking.Stop();
         loseScreen.SetActive(true);
     }
 
@@ -154,6 +157,7 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         currentTime = 0f;
+        timeTicking.Stop();
 
         // add a check to see that all of the pop-ups have been closed
         // if the counter == int set for amount of pop-ups in scene, execute

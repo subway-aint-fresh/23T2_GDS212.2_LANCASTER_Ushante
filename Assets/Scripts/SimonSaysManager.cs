@@ -24,6 +24,9 @@ public class SimonSaysManager : MonoBehaviour
     public AudioClip button3AudioClip;
     public AudioClip button4AudioClip;
 
+    public AudioSource errorSound;             // Sound to play on incorrect sequence
+    public AudioSource winSound;               // Sound to play on successful sequence
+
     private AudioSource button1AudioSource; // Temporary storage for audio components
     private AudioSource button2AudioSource;
     private AudioSource button3AudioSource;
@@ -106,15 +109,10 @@ public class SimonSaysManager : MonoBehaviour
         // Add the player's button press to the sequence
         playerSequence.Add(buttonIndex);
 
-        // Play the button sound
-        PlayButtonSound(buttonIndex);
-
         // Compare player's sequence with expected sequence
         CheckPlayerSequence();
-    }
 
-    public void PlayButtonSound(int buttonIndex)
-    {
+        // Play the button sound effect
         switch (buttonIndex)
         {
             case 1:
@@ -131,6 +129,7 @@ public class SimonSaysManager : MonoBehaviour
                 break;
         }
     }
+
 
     public void CheckPlayerSequence()
     {
@@ -149,7 +148,7 @@ public class SimonSaysManager : MonoBehaviour
 
             if (sequencesMatch)
             {
-                // Player's sequence matches the expected sequence, play win method from GameManager
+                // Player's sequence matches the expected sequence, play win sound and call win method from GameManager
                 CorrectSequence();
             }
             else
@@ -233,6 +232,9 @@ public class SimonSaysManager : MonoBehaviour
 
         Debug.Log("Wrong sequence. Try again.");
 
+        // Play error sound
+        errorSound.Play();
+
         // Check if the player has reached the maximum number of failed attempts
         if (failedAttempts >= 30)
         {
@@ -254,10 +256,13 @@ public class SimonSaysManager : MonoBehaviour
     {
         Debug.Log("Correct sequence!");
 
+        // Play win sound
+        winSound.Play();
+
         // Disable player input after a correct sequence
         playerInputEnabled = false;
 
-        // Play win method in game manager
+        // Call win method in game manager
         gameManager.SuccessfulSequence();
     }
 }
