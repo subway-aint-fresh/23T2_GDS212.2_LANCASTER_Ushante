@@ -11,12 +11,19 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;   // Reference to the TMP time text
 
     public GameObject exitButton;       // Reference to the exit button on the popup template
+    public GameObject sendButton;       // Reference to the send button on the email prefab
+    private Collider2D send_Collider;   // Collider on the send button
 
     public GameObject gameOverWindow;   // Reference to the game over window
     public GameObject gameWinWindow;    // Reference to the game win window
 
+    public int popupsInScene = 1;
+    [SerializeField] private int popupsClosed; // Counter for how many pop-ups have been closed
+
     private int correctSelections;
     private int wrongSelections;
+
+    public GameObject findImagePuzzle;  // Reference to the find image puzzle
 
     private void Awake()
     {
@@ -34,6 +41,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartTimer();
+        send_Collider = sendButton.GetComponent<Collider2D>();
+
+        //set find image pop-up to active
+        findImagePuzzle.SetActive(true);
     }
 
     private void Update()
@@ -109,6 +120,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Method responsible for increasing popups closed counter, to be called by exit button
+    public void ClosedPopup()
+    {
+        // Increase counter for popups closed
+        if (popupsClosed < popupsInScene)
+        {
+            popupsClosed++;
+
+            // Set the box collider active instead
+            send_Collider.enabled = true;
+        }
+    }
+
     private void SuccessfulImageSelection()
     {
         // Set exit button to active
@@ -130,7 +154,13 @@ public class GameManager : MonoBehaviour
     public void GameWin()
     {
         currentTime = 0f;
-        gameWinWindow.SetActive(true);
+
+        // add a check to see that all of the pop-ups have been closed
+        // if the counter == int set for amount of pop-ups in scene, execute
+        if (popupsClosed == popupsInScene)
+        {
+            gameWinWindow.SetActive(true);
+        }
     }
 
     // Loads home screen scene

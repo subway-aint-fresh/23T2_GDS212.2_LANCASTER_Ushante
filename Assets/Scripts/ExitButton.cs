@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class ExitButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject findImagePuzzle;    //reference to the find image popup
+
+    private GameManager gameManager;
+
+    private void Start()
     {
-        
+        gameManager = GameManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnMouseDown()
     {
-        
+        // when the exit button is clicked, the find image prefab/ pop-up is set to inactive
+        findImagePuzzle.SetActive(false);
+
+        // this will then trigger the email send button to be interactable
+        // eventually make it so it increases the pop-up's closed counter
+        gameManager.ClosedPopup();
+
     }
+
 }
