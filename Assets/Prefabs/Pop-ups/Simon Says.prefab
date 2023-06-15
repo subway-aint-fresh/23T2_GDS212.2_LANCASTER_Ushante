@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519806755477505099}
   - component: {fileID: 6004613542158426808}
-  - component: {fileID: 1966528938438590308}
+  - component: {fileID: 5086868073663289424}
   m_Layer: 0
   m_Name: Color
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &1966528938438590308
+--- !u!82 &5086868073663289424
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841454649433410056}
   - component: {fileID: 6610552864413853726}
-  - component: {fileID: 8529161729390510172}
+  - component: {fileID: 9108728658634791089}
   m_Layer: 0
   m_Name: Color
   m_TagString: Untagged
@@ -266,7 +266,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &8529161729390510172
+--- !u!82 &9108728658634791089
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +276,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2889802820192918492}
   - component: {fileID: 7204413901317537922}
-  - component: {fileID: 6184020243105872141}
+  - component: {fileID: 5511337149570614557}
   m_Layer: 0
   m_Name: Color
   m_TagString: Untagged
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &6184020243105872141
+--- !u!82 &5511337149570614557
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -457,7 +457,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1326,7 +1326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6878215372081900480}
   - component: {fileID: 7050234730223333229}
-  - component: {fileID: 2129972657430963638}
+  - component: {fileID: 8149563200519211165}
   m_Layer: 0
   m_Name: Color
   m_TagString: Untagged
@@ -1401,7 +1401,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!82 &2129972657430963638
+--- !u!82 &8149563200519211165
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1411,7 +1411,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

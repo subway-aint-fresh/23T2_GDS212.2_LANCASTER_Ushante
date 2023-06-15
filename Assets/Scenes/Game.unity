@@ -587,6 +587,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5086868073663289424, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: Priority
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086868073663289424, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+    - target: {fileID: 5086868073663289424, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511337149570614557, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: Priority
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511337149570614557, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
     - target: {fileID: 6961910343595640996, guid: d9b1838545b317843850d6d9151711f2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -643,6 +663,22 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8149563200519211165, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: Priority
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149563200519211165, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+    - target: {fileID: 9108728658634791089, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: Priority
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108728658634791089, guid: d9b1838545b317843850d6d9151711f2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b1838545b317843850d6d9151711f2, type: 3}
 --- !u!1 &1184463427 stripped
@@ -750,7 +786,7 @@ GameObject:
   - component: {fileID: 1722516664}
   - component: {fileID: 1722516663}
   m_Layer: 0
-  m_Name: Clock sound
+  m_Name: Clock Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,7 +901,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740600207
 GameObject:
@@ -933,7 +969,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776785742 stripped
 GameObject:
@@ -1078,6 +1114,10 @@ MonoBehaviour:
   button3Color: {fileID: 212185499}
   button4: {fileID: 294209379}
   button4Color: {fileID: 2016809257}
+  button1AudioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  button2AudioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  button3AudioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
+  button4AudioClip: {fileID: 8300000, guid: fc84ec6caaad1454d82802aeb359ba44, type: 3}
 --- !u!1 &2086235473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3448672926825389636, guid: df81459903f3d024785d1e6c4df7c890, type: 3}

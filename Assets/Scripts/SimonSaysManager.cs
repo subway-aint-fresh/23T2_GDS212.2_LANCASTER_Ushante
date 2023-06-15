@@ -19,6 +19,16 @@ public class SimonSaysManager : MonoBehaviour
     public GameObject button4;              // Button 4 non-colored 
     public GameObject button4Color;         // Button 4 colored child
 
+    public AudioClip button1AudioClip;           // Audio beeps for buttons
+    public AudioClip button2AudioClip;
+    public AudioClip button3AudioClip;
+    public AudioClip button4AudioClip;
+
+    private AudioSource button1AudioSource; // Temporary storage for audio components
+    private AudioSource button2AudioSource;
+    private AudioSource button3AudioSource;
+    private AudioSource button4AudioSource;
+
     private bool playerInputEnabled = false;  // Flag to control player input
 
     private int failedAttempts = 0; // Counter for the number of failed attempts
@@ -32,6 +42,18 @@ public class SimonSaysManager : MonoBehaviour
         button2Color.SetActive(false);
         button3Color.SetActive(false);
         button4Color.SetActive(false);
+
+        // Get the AudioSources attached to the buttons
+        button1AudioSource = button1Color.GetComponent<AudioSource>();
+        button2AudioSource = button2Color.GetComponent<AudioSource>();
+        button3AudioSource = button3Color.GetComponent<AudioSource>();
+        button4AudioSource = button4Color.GetComponent<AudioSource>();
+
+        // Assign audio clips to audio sources
+        button1AudioSource.clip = button1AudioClip;
+        button2AudioSource.clip = button2AudioClip;
+        button3AudioSource.clip = button3AudioClip;
+        button4AudioSource.clip = button4AudioClip;
 
         StartCoroutine(PlaySequence());
 
@@ -106,7 +128,6 @@ public class SimonSaysManager : MonoBehaviour
             if (sequencesMatch)
             {
                 // Player's sequence matches the expected sequence, play win method from GameManager
-                /*CorrectSequence();*/
                 CorrectSequence();
             }
             else
@@ -135,24 +156,28 @@ public class SimonSaysManager : MonoBehaviour
         switch (buttonIndex)
         {
             case 1:
-                StartCoroutine(ActivateButton(button1Color, button1));
+                StartCoroutine(ActivateButton(button1Color, button1, button1AudioSource));
                 break;
             case 2:
-                StartCoroutine(ActivateButton(button2Color, button2));
+                StartCoroutine(ActivateButton(button2Color, button2, button2AudioSource));
                 break;
             case 3:
-                StartCoroutine(ActivateButton(button3Color, button3));
+                StartCoroutine(ActivateButton(button3Color, button3, button3AudioSource));
                 break;
             case 4:
-                StartCoroutine(ActivateButton(button4Color, button4));
+                StartCoroutine(ActivateButton(button4Color, button4, button4AudioSource));
                 break;
         }
     }
 
-    private IEnumerator ActivateButton(GameObject coloredButton, GameObject button)
+    private IEnumerator ActivateButton(GameObject coloredButton, GameObject button, AudioSource audioSource)
     {
+
         coloredButton.SetActive(true);
         button.GetComponent<SpriteRenderer>().enabled = false;
+
+        // Play the beep sound effect
+        audioSource.Play();
 
         yield return new WaitForSeconds(0.5f); // Duration the colored button is active
 
