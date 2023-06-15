@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     private float currentTime;          // Time remaining
     public TextMeshProUGUI timerText;   // Reference to the TMP time text
 
+    public GameObject exitButton;       // Reference to the exit button on the popup template
+
     public GameObject gameOverWindow;   // Reference to the game over window
     public GameObject gameWinWindow;    // Reference to the game win window
 
@@ -111,6 +113,10 @@ public class GameManager : MonoBehaviour
     {
         // Set exit button to active
         Debug.Log("pop up done");
+
+        //enable exit button
+        exitButton.SetActive(true);
+
     }
 
     // Ends the game and throws up a game over window 
