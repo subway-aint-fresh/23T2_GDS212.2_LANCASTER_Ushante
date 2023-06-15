@@ -165,7 +165,8 @@ MonoBehaviour:
   popupsClosed: 0
   winScreen: {fileID: 427405866}
   loseScreen: {fileID: 776685466}
-  findImagePuzzle: {fileID: 1678431222}
+  findImageWindow: {fileID: 1678431222}
+  simonSaysWindow: {fileID: 2080221979}
 --- !u!4 &269951308
 Transform:
   m_ObjectHideFlags: 0
@@ -592,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961910343595640996, guid: d9b1838545b317843850d6d9151711f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.54
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 6961910343595640996, guid: d9b1838545b317843850d6d9151711f2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1016,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2760659715511777666, guid: df81459903f3d024785d1e6c4df7c890, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2760659715511777669, guid: df81459903f3d024785d1e6c4df7c890, type: 3}
       propertyPath: m_RootOrder

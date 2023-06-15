@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     private int correctSelections;
     private int wrongSelections;
 
-    public GameObject findImagePuzzle;  // Reference to the find image puzzle
+    public GameObject findImageWindow;  // Reference to the find image puzzle
+    public GameObject simonSaysWindow;
 
     private bool playerInputEnabled = false; // Flag to control player input for ImageSelection
 
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
         send_Collider = sendButton.GetComponent<Collider2D>();
 
         // Set find image pop-up to active
-        //findImagePuzzle.SetActive(true);
+        //findImageWindow.SetActive(true);
     }
 
     private void Update()
@@ -126,7 +127,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Enabling find image window");
         // Set simon says window to inactive
-        // simonSaysWindow.SetActive(false);
+        simonSaysWindow.SetActive(false);
 
         // Enable input on find image window
         playerInputEnabled = true;
