@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3253663477204878759}
   - component: {fileID: 3253663477204878757}
   - component: {fileID: 3253663477204878756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expectedLayerName: CorrectImage
+  border: {fileID: 3253663478077873876}
 --- !u!1 &3253663477899132458
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +82,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3253663477899132459}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Apple (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3253663478077873877}
   - component: {fileID: 3253663478077873874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}

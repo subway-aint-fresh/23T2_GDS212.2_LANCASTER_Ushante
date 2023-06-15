@@ -14,6 +14,8 @@ public class ImageSelection : MonoBehaviour
 
     public string expectedLayerName = "CorrectImage"; // Name of the expected correct image layer
 
+    public GameObject border;
+
     private void Start()
     {
         gameManager = GameManager.Instance;
@@ -22,23 +24,26 @@ public class ImageSelection : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameObject.layer == LayerMask.NameToLayer(expectedLayerName))
-        {
+        //if (gameObject.layer == LayerMask.NameToLayer(expectedLayerName))
+        //{
             IsSelected = !IsSelected;
 
             if (IsSelected)
             {
                 OnImageSelected?.Invoke(gameObject);
                 Debug.Log("Image selected");
+                border.SetActive(true);
+
             }
             else
             {
                 OnImageDeselected?.Invoke(gameObject);
                 Debug.Log("Image deselected");
+                border.SetActive(false);
             }
 
             gameManager.CheckImageSelections(); // Call the method in the GameManager to check selected images
-        }
+        //}
     }
 }
 

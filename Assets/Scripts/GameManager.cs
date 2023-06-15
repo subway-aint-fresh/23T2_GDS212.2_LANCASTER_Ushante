@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Correct Selections: " + correctSelections);
         Debug.Log("Wrong Selections: " + wrongSelections);
 
-        if (correctSelections >= 6 && wrongSelections <= 3)
+        if (correctSelections >= 6 && wrongSelections <= 0)
         {
             // Trigger a method in the GameManager to handle the successful selection of 6 correct images.
             SuccessfulImageSelection();
