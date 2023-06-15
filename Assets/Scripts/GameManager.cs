@@ -1,11 +1,10 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-
     public float timeLimit = 60f;       // Time limit set in seconds
     private float currentTime;          // Time remaining
     public TextMeshProUGUI timerText;   // Reference to the TMP time text
@@ -14,36 +13,23 @@ public class GameManager : MonoBehaviour
     public GameObject sendButton;       // Reference to the send button on the email prefab
     private Collider2D send_Collider;   // Collider on the send button
 
-    public GameObject gameOverWindow;   // Reference to the game over window
-    public GameObject gameWinWindow;    // Reference to the game win window
-
     public int popupsInScene = 1;
     [SerializeField] private int popupsClosed; // Counter for how many pop-ups have been closed
+
+    public GameObject winScreen;        // Reference to Win screen
+    public GameObject loseScreen;       // Reference to lose screen
 
     private int correctSelections;
     private int wrongSelections;
 
     public GameObject findImagePuzzle;  // Reference to the find image puzzle
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void Start()
     {
         StartTimer();
         send_Collider = sendButton.GetComponent<Collider2D>();
 
-        //set find image pop-up to active
+        // Set find image pop-up to active
         findImagePuzzle.SetActive(true);
     }
 
@@ -138,16 +124,15 @@ public class GameManager : MonoBehaviour
         // Set exit button to active
         Debug.Log("pop up done");
 
-        //enable exit button
+        // Enable exit button
         exitButton.SetActive(true);
-
     }
 
     // Ends the game and throws up a game over window 
     private void GameFailed()
     {
         currentTime = 0f;
-        gameOverWindow.SetActive(true);
+        loseScreen.SetActive(true);
     }
 
     // Ends the game and throws up a game win window
@@ -159,7 +144,7 @@ public class GameManager : MonoBehaviour
         // if the counter == int set for amount of pop-ups in scene, execute
         if (popupsClosed == popupsInScene)
         {
-            gameWinWindow.SetActive(true);
+            winScreen.SetActive(true);
         }
     }
 

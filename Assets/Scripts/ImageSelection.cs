@@ -18,7 +18,7 @@ public class ImageSelection : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
+        gameManager = FindObjectOfType<GameManager>();
         IsSelected = false; // Initialize selection state to false
     }
 
@@ -33,7 +33,6 @@ public class ImageSelection : MonoBehaviour
                 OnImageSelected?.Invoke(gameObject);
                 Debug.Log("Image selected");
                 border.SetActive(true);
-
             }
             else
             {
@@ -46,6 +45,7 @@ public class ImageSelection : MonoBehaviour
         //}
     }
 }
+
 
 
 
